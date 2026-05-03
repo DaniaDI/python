@@ -43,7 +43,7 @@ def show():
     date=request.args.get("date")
 
     return render_template(
-        ("checkout.html"),
+        "checkout.html",
          strawberry=fruite1 ,
                     raspberry=fruite2 ,
                     apple =fruite3 ,
