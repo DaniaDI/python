@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter Assignment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light text-center p-5">
+    <div class="container card shadow p-4" style="max-width: 500px;">
+        <h1>Counter</h1>
+        
+        <div class="my-4">
+            <p>The page has been visited <strong>{{ session['visits'] }}
+            </strong> times.</p>
+            <p>Counter Value: <h2 class="display-4 text-primary">{{ session['count'] }}</h2></p>
+        </div>
+
+        <!-- أزرار التحكم -->
+        <div class="d-flex justify-content-around mb-4">
+            <a href="/add2" class="btn btn-success">+2 Button</a>
+            <a href="/reset" class="btn btn-warning">Reset Counter</a>
+            <a href="/destroy_session" class="btn btn-danger">Reset Session</a>
+        </div>
+
+         
+        <form action="/add_custom" method="post">
+          <input type="number" name="number"class="form-control" placeholder="Custom increment..." required>
+           <div class="input-group-append mt-4">
+                <button type="submit" class="btn btn-dark">Add</button>
+            </div>
+       </form>
+
+        <a href="/" class="mt-4 d-block">Refresh Page</a>
+    </div>
+</body>
+</html>
