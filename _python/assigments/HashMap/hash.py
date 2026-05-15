@@ -41,7 +41,7 @@ obj = MyHashMap()
 obj.put(1001, 1)
 param_2 = obj.get(1001)
 obj.remove(1001)
-
+print(obj)
 
 my_hash_map = MyHashMap()
 
@@ -57,5 +57,6 @@ print(my_hash_map.get(1001)) # Output: 200
 my_hash_map.remove(1)
 print(my_hash_map.get(1))    # Output: -1 (Not found)
 print(my_hash_map.get(1001)) # Output: 200 (Still exists)
+
 
  
