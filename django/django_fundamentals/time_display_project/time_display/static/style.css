@@ -1,0 +1,17 @@
+.container{
+    margin: auto;
+    width:100%;
+    
+}
+
+.container div{
+    width:250px;
+    height:80px;
+    background-color: aquamarine;
+    color:blueviolet;
+    margin-top: 22px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    padding-top: 22px;
+}
