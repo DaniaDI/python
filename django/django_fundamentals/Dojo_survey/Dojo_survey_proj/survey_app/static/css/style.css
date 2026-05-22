@@ -1,0 +1,25 @@
+
+        .container{
+            border:2px solid black;
+            width:50%;
+            margin: auto;
+            padding:22px;
+          
+        }
+        .content{
+            display: flex;
+            gap:100px;
+        }
+
+        div{
+            margin-bottom: 22px;
+        }
+        a{
+            width:100px;
+            height:100px;
+            background-color: blueviolet;
+            text-decoration: none;
+            color:white;
+            padding:15px 18px;
+        }
+   
