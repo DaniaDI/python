@@ -40,6 +40,18 @@
     </form>
 {% endif %}
 
+{% if game_over and won %}
+        <div class="card p-3 my-3 border-success shadow-sm">
+            <h5 class="text-success">Congratulations!</h5>
+            <p>Enter your name to join the leaderboard:</p>
+            <form action="/save_score/" method="post">
+                {% csrf_token %}
+                <input type="text" name="player_name" class="form-control mb-2 text-center" placeholder="Your Name" required>
+                <button class="btn btn-success w-100">Save my Score</button>
+            </form>
+        </div>
+    {% endif %}
+
  <!-- Restart -->
  {% if game_over %}
    <p>Attempts: {{ attempts }} / 5 </p>
