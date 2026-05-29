@@ -36,48 +36,61 @@
 
 </head>
 <body>
+
+    <div class="text-center bg-light p-3 border-bottom mb-4">
+        <h3 class="d-inline-block mx-4"> Your Gold: <span class="text-warning fw-bold">{{ gold }}</span></h3>
+        <h4 class="d-inline-block mx-4"> Target Goal: <span class="text-success fw-bold">{{ target_gold }}</span></h4>
+        <h4 class="d-inline-block mx-4"> Moves: <span class="text-info fw-bold">{{ moves }} / {{ max_moves }}</span></h4>
+    </div>
+
+    {% if game_over %}
+        <div class="alert alert-dark text-center m-4 p-4 shadow-sm">
+            <h2 class="fw-bold text-danger">{{ result }}</h2>
+            <p class="text-muted">Game has ended.Click 'Play Again' </p>
+        </div>
+    {% else %}
       <h3 class="gold">Your Gold: {{ gold }}</h3>
     <div class="contanier">
      <div class="box">
         <h2>Farm</h2>
       
         <p>earns 10-20 gold </p>
-    <form action="/process_money/" method="post">
+    <form action="/process_money/farm/" method="post">
         {% csrf_token %}
-    <input type="hidden" name="building" value="farm" />
+    <!-- <input type="hidden" name="building" value="farm" /> -->
     <input type="submit" value="Find Gold!"/>
     </form>
      </div>
      <div class="box">
           <h2>Cave</h2>
         <p>earns 5-10 golds</p>
-    <form action="/process_money/" method="post">
+    <form action="/process_money/cave/" method="post">
          {% csrf_token %}
-    <input type="hidden" name="building" value="cave" />
+    <!-- <input type="hidden" name="building" value="cave" /> -->
     <input type="submit" value="Find Gold!"/>
     </form>
   </div>
 <div class="box">
       <h2>House</h2>
       <p>earns 2-5 golds</p>
-    <form action="/process_money/" method="post">
+    <form action="/process_money/house/" method="post">
          {% csrf_token %}
-    <input type="hidden" name="building" value="house" />
+    <!-- <input type="hidden" name="building" value="house" /> -->
     <input type="submit" value="Find Gold!"/>
     </form>
 </div>
 <div class="box">
       <h2>Casino</h2>
       <p>earns 0-50 golds</p>
-    <form action="/process_money" method="post">
+    <form action="/process_money/casino/" method="post">
         {% csrf_token %}
-    <input type="hidden" name="building" value="casino" />
+    <!-- <input type="hidden" name="building" value="casino" /> -->
     <input type="submit" value="Find Gold!"/>
     </form>
 </div>
 
     </div>
-
+{% endif %}
     <a href="/restart/" class="btn btn-dark mt-4">play Again</a>
 
     <div class="activite" style="height:200px; width:80%; overflow:auto; border:1px solid black; padding:10px;">
