@@ -15,7 +15,7 @@ An interactive, web-based mini-game built using the **Django** framework. Player
   * **Casino:** Earns or Loses up to 50 gold (`-50` to `50`).
 * All actions are logged in real-time within an interactive activity log box.
 
-### 2. 🥷 Ninja Bonus (Dynamic URLs)=>/process_money/str:building/
+### 2.(Dynamic URLs)=>/process_money/str:building/
 *like:`<form action="/process_money/cave/" method="post">`
 * Completely eliminated the hidden form inputs (`<input type="hidden">`).
 * Routes are processed dynamically through the URL structure using Django paths:
