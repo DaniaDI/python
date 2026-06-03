@@ -36,5 +36,5 @@ def add_ninja(request):
 
 def delete_dojo(request,id):
     if request.method == 'POST':
-      Dojo.objects.get(id=id).delete()  # ← بتحذف الـ dojo + كل ninjas تبعه
+      Dojo.objects.filter(id=id).delete()  # ← بتحذف الـ dojo + كل ninjas تبعه
     return redirect('/')
