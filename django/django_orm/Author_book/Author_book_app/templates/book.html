@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Books Management</title>
+</head>
+<body class="container mt-5">
+<form action='/add_book/' method="POST" class="row g-3">
+    {% csrf_token %}
+    <div class="col-md-5">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name='title' id="title" required>
+    </div>
+    <div class="col-md-5">
+        <label for="desc" class="form-label">Description</label>
+        <textarea name="desc" id="desc" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Add Book</button>
+    </div>
+</form>
+
+<div class="table-section mt-5">
+    <h2>All Books</h2>
+    <table class="table table-striped table-hover mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in all_books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>
+                    <a href="/books/{{ book.id }}/" class="btn btn-sm btn-info">View</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">No books added yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
