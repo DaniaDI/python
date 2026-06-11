@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show details</title>
+</head>
+<body>
+   
+    <h1>TV Show {{ show.id }}</h1>
+    <ol>
+        <li>Title:{{ show.title }}</li>
+        <li>Network:{{ show.network }}</li>
+        <li>Release_Date:{{ show.release_date }}</li>
+        <li>Description:{{ show.desc }}</li>
+   
+    </ol>
+   <a href="/shows/{{ show.id }}/edit/">Edit</a> 
+   <!-- <a href="/shows/{{ show.id }}/destroy/">Delete</a> -->
+    <form action="/shows/{{ show.id }}/destroy/" method="POST" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" style="border: none;" class="btn btn-danger">Delete</button>
+</form>
+
+</body>
+</html>
