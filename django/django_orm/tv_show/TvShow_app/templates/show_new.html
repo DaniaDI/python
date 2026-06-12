@@ -12,18 +12,22 @@
         <div class="col-md-5">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" name="title" id="title" required>
+            <div class="text-danger">{{ form.title.errors }}</div>
         </div>
            <div class="col-md-5">
             <label for="network" class="form-label">Network</label>
             <input type="text" class="form-control" name="network" id="network" required>
+            <div class="text-danger">{{ form.network.errors }}</div>
         </div>
         <div class="col-md-5">
             <label for="date" class="form-label">Release Date</label>
-            <input type="date" class="form-control" name="date" id="date" required>
+            <input type="date" class="form-control" name="release_date" id="date" required>
+            <div class="text-danger">{{ form.release_date.errors }}</div>
         </div>
         <div class="col-md-10">
             <label for="desc" class="form-label">Description</label>
             <textarea name="desc" id="desc" class="form-control" rows="4"></textarea>
+            <div class="text-danger">{{ form.desc.errors }}</div>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Create</button>

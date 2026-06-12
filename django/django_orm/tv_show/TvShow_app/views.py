@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Show
+from .forms import ShowForm
 # Create your views here.
 
 def index(request):
@@ -12,17 +13,35 @@ def index(request):
 def show_new(request):#لعرض  الفورم فقط
     return render(request,'show_new.html')
     
-def show_create(request):#لاستقبال البيانات وحفظها فقط
-    if request.method == 'POST':
-        title=request.POST['title']
-        network=request.POST['network']
-        release_date=request.POST['date']
-        desc=request.POST['desc']
+# def show_create(request):#لاستقبال البيانات وحفظها فقط
+#     if request.method == 'POST':
+#         title=request.POST['title']
+#         network=request.POST['network']
+#         release_date=request.POST['release_date']
+#         desc=request.POST['desc']
 
-        create_show= Show.objects.create(title=title,network=network,release_date=release_date,desc=desc)
-        return redirect(f'/shows/{create_show.id}')
+#         create_show= Show.objects.create(title=title,network=network,release_date=release_date,desc=desc)
+#         return redirect(f'/shows/{create_show.id}')
 
-    return redirect('/shows/new')
+#     return redirect('/shows/new')
+
+def show_create(request):
+    if request.method == 'GET':
+        form = ShowForm()
+        context={
+            "form":form
+        }
+        return render(request,'show_new.html',context)
+    else:
+        form=ShowForm(request.POST)
+        if form.is_valid():
+            create_show = form.save() 
+            return redirect(f'/shows/{create_show.id}/')
+
+        context = {
+            "form": form
+        }
+        return render(request, 'show_new.html', context)
 
 
 def show_read(request,id):
@@ -49,15 +68,33 @@ def show_edit(request, id):#للعرض فقط
     return render(request, 'update.html',context)
 
 
-def show_update(request, id):
+# def show_update(request, id):
+#     if request.method == "POST":
+#         show = Show.objects.get(id=id)
+        
+#         show.title = request.POST['title']
+#         show.network = request.POST['network']
+#         show.release_date = request.POST['release_date']
+#         show.desc = request.POST['desc']
+#         show.save()
+        
+#         return redirect(f'/shows/{show.id}')
+#     return redirect(f'/shows/{id}/')
+
+def show_update(request,id):
+    show = Show.objects.get(id=id)
     if request.method == "POST":
-        show = Show.objects.get(id=id)
+        form=ShowForm(request.POST,instance=show)
         
-        show.title = request.POST['title']
-        show.network = request.POST['network']
-        show.release_date = request.POST['date']
-        show.desc = request.POST['desc']
-        show.save()
+        if form.is_valid():
+            form.save()
+            return redirect(f'/shows/{show.id}')
+    else:
+        form=ShowForm(instance=show)
+    context={
+            "form":form,
+            "show":show # show.id 
         
-        return redirect(f'/shows/{show.id}')
-    return redirect(f'/shows/{id}/')
+        }
+    return render(request,'update.html',context)
+
